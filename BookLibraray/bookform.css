@@ -1,0 +1,63 @@
+.booksdiv{
+    background-color: darksalmon;
+    height: 650px;
+    width: 400px;
+   position: relative;
+   left: 36%;
+   border-radius: 12px;
+   padding: 10px;
+   box-shadow: 5px 1px 12px #cfb4be;
+}
+body{
+   
+    background-color: rgb(255, 255, 255);
+    color: white;
+}
+.bookform{
+    font-family: cursive;
+    text-align: center;
+    
+}
+input{
+    border-radius: 9px;
+    width: 250px;
+    margin-left: 21px;
+    height: 36px;
+
+}
+select{
+    border-radius: 12px;
+    margin-left: 21px;
+    width: 250px;
+    height: 36px;
+    border: 2px solid black;
+}
+.btn{
+    
+    font-weight: bold;
+    color: white;
+    background-color: grey;
+    border-style: none;
+    border-radius: 2px;
+    width: 100px;
+    height: 30px;
+    font-family: cursive;
+    border-radius: 4px;
+}
+#check1{
+width: 25px;
+
+}
+#check2{
+    width: 25px;
+    
+    }
+
+th,td {
+  width: 150px;
+  /* text-align: center; */
+}
+.error{
+    color:white;
+  
+}

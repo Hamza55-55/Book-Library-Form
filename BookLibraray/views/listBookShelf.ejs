@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Books Shelf</title>
+    </head>
+    <body>
+        <table border="2">
+            <tr>
+                <th>Name</th><th>Title</th><th>Author</th><th>Edition</th><th>Category</th><th>Price</th><th>Stock</th><
+            </tr>
+            <%  listBooks.forEach(()book=> {  %>
+            <tr>
+                <td><%=book.bkname %></td>
+                <td><%=book.bktitle %></td>
+                <td><%=book.bkauthor %></td>
+                <td><%=book.bkedition %></td>
+                <td><%=book.bkcat %></td>
+                <td><%=book.bkprice %></td>
+                <td><%=book.bkstock %></td>
+                <td><%=book.bkavaliable %></td>
+            </tr>
+            <% }); %>
+        </table>
+    </body>
+</html>

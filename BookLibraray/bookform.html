@@ -1,0 +1,173 @@
+
+<html>
+    <head><title>LIBRARY</title>
+    <link rel="stylesheet" href="bookform.css">
+   
+    <script>
+        function validatingBook(){
+            let nameBox=document.getElementById("bname");
+            let titlebBox=document.getElementById("btitle");
+            let editionBox=document.getElementById("bedition");
+            let autherBox=document.getElementById("bauthor");
+            let priceBox=document.getElementById("bprice");
+            let stockBox=document.getElementById("bstock");
+            let checkBox1=document.getElementById("check1");
+            let checkBox2=document.getElementById("check2");
+
+            let nameErrorBox=document.getElementById("nameError");
+            let titleErrorBox=document.getElementById("titleError");
+            let editionErrorBox=document.getElementById("editionError");
+            let authorErrorBox=document.getElementById("authorError");
+            let priceErrorBox=document.getElementById("priceError");
+            let stockErrorBox=document.getElementById("stockError");
+
+            nameErrorBox.innerHTML="&nbsp;";
+            titleErrorBox.innerHTML="&nbsp;";
+            editionErrorBox.innerHTML="&nbsp;";
+            authorErrorBox.innerHTML="&nbsp;";
+            priceErrorBox.innerHTML="&nbsp;";
+            stockErrorBox.innerHTML="&nbsp;";
+            
+            var letters = /^[A-Za-z]+$/;
+
+            if(nameBox.value== ""){
+                nameErrorBox.innerHTML="Please enter name of book"
+                nameBox.focus();
+                return false;
+            }else if(nameBox.value.length<3 || nameBox.value.length>20){
+                nameErrorBox.innerHTML="Please enter name b/w 3-15";
+                return false;
+            }else if(!nameBox.value.match(letters)){
+                nameErrorBox.innerHTML="Please enter alphabets"
+                return false;
+            }
+
+            if(titlebBox.value==""){
+                titleErrorBox.innerHTML=" Please enter title";
+                return false;
+            }
+
+            if(editionBox.value==""){
+                editionErrorBox.innerHTML="Please provide edition."
+                return false;
+            }
+
+            if(autherBox.value==""){
+                authorErrorBox.innerHTML="Please provide auther name";
+                return false;
+            }else if(!autherBox.value.match(letters)){
+                authorErrorBox.innerHTML="Please enter alphabets"
+                return false;
+            }
+
+            if(priceBox.value==""){
+                priceErrorBox.innerHTML="Please provide price";
+                return false;
+            }else if(priceBox.value<300){
+                priceErrorBox.innerHTML="No book at this price"
+                return false;
+            }
+          
+            if(stockBox.value==""){
+                stockErrorBox.innerHTML="Provide stock You need";
+                return false;
+            }else if(stockBox.value<0|| stockBox.value>100){
+               stockErrorBox.innerHTML="stock limit is 1-100 only"
+                return false;
+            }
+        
+            if(!checkBox1.checked && !checkBox2.checked){
+                stockErrorBox.innerHTML="Please enter availability.";
+                return false;
+            }
+
+            
+        }
+        function handleRefill(){
+            let nameBox=document.getElementById("bname");
+            let titlebBox=document.getElementById("btitle");
+            let editionBox=document.getElementById("bedition");
+            let autherBox=document.getElementById("bauthor");
+            let priceBox=document.getElementById("bprice");
+            let stockBox=document.getElementById("bstock");
+            
+            let defaultvalue={
+                bname:'GeologyofEarth',
+                btitle:"Adventure",
+                bedition:'2nd edition',
+                bauthor:'kkR',
+                bprice:'2000',
+                bstock:'12'
+            }
+            if(nameBox.value ===""){
+                nameBox.value=defaultvalue.bname; 
+            }
+            if(titlebBox.value ===""){
+                titlebBox.value=defaultvalue.btitle; 
+            }
+            if(editionBox.value ===""){
+                editionBox.value=defaultvalue.bedition; 
+            }
+            if(autherBox.value ===""){
+                autherBox.value=defaultvalue.bauthor; 
+            }
+            if(priceBox.value ===""){
+               priceBox.value=defaultvalue.bprice; 
+            }
+            if(stockBox.value ===""){
+                stockBox.value=defaultvalue.bstock; 
+            }
+
+           
+        }
+    </script>
+     </head>
+    <body>
+        <div class="booksdiv">
+            <form id="bookform" action="http://localhost:8080/buybook" method="POST" class="bookform" onsubmit="return validatingBook();">
+                <h2>Book Store</h2>
+                <table>
+                    <tr><td>Name</td><td><input type="text" name="bkname" id="bname"></td></tr>
+                    <tr><td colspan="2" align="end"><span class="error" id="nameError">&nbsp;</span></td></tr>
+
+                    <tr><td>Title</td><td><input type="text" name="bktitle" id="btitle"></td></tr>
+                    <tr><td colspan="2" align="end"><span class="error" id="titleError">&nbsp;</span></td></tr>
+
+                    <tr><td>Edition</td><td><input type="text" name="bkedition" id="bedition"></td></tr>
+                    <tr><td colspan="2" align="end"><span class="error" id="editionError">&nbsp;</span></td></tr>
+
+                    <tr><td>Author</td><td><input type="text" name="bkauthor" id="bauthor"></td></tr>
+                    <tr><td colspan="2" align="end"><span class="error" id="authorError">&nbsp;</span></td></tr>
+
+                    <tr><td>Price</td><td><input type="number" name="bkprice" id="bprice"></td></tr>
+                    <tr><td colspan="2" align="end"><span class="error" id="priceError">&nbsp;</span></td></tr>
+
+                    <tr><td>Category</td>
+                    <td><select name="bkcat">
+                    <option value="Children's Books">Children's Books</option>
+                    <option value="Education & Teaching">Education & Teaching</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Politics & Socail Sciences">Politics & Socail Sciences</option>
+                    <option value="Relegion & Spirituality">Relegion & Spirituality</option>
+                    </select></td></tr>
+                    <tr><td><span>&nbsp;</span></td></tr>
+
+                    <tr><td>No of Stock</td><td><input type="number" name="bkstock" id="bstock"></td></tr>
+                    <tr><td colspan="2" align="end"><span class="error" id="stockError">&nbsp;</span></td></tr>
+
+                    <tr><td>Avaliability</td>
+                    <td>
+                    <input type="checkbox" name="bkavaliable" value="Yes" id="check1"><span>Yes </span> 
+                    <input type="checkbox" name="bkavaliable" value="No" id="check2"><span>No</span>
+                    </td></tr>
+                    <tr><tr>
+                    <td ><button class="btn" type="button" onclick="handleRefill()">Refill</button>
+                    <td align="end" ><button class="btn" type="submit">SAVE</button>
+                    </td></tr></tr>
+                
+                   
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
